@@ -12,9 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-# from pyvirtualdisplay import Display
 
 result_permits = {}
 
@@ -67,10 +65,6 @@ def selenium_parse():
 
     # It will be easier and quicker to find a direct page with submit form than wait for it to appear on a page
     link_to_navigate = re.findall(r'height="797" src="([^"]+)', response.text)[0]
-
-    # # set xvfb display since there is no GUI in docker container.
-    # display = Display(visible=0, size=(800, 600))
-    # display.start()
 
     # Disable options below if you  have a chromedriver and wanna run script locally
 
