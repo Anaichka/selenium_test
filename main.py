@@ -60,15 +60,17 @@ def selenium_parse():
     # Generates a list of PN
     permit_number_list = generate_pn()
 
+    proxy = 'http://139.144.24.46:8080'
+
     session = requests.Session()
-    response = session.get(start_url)
+    response = session.get(start_url, proxies={'http': proxy})
 
     # It will be easier and quicker to find a direct page with submit form than wait for it to appear on a page
     link_to_navigate = re.findall(r'height="797" src="([^"]+)', response.text)[0]
 
-    # Disable options below if you  have a chromedriver and wanna run script locally
-
     options = Options()
+    # Disable options below if you  have a chromedriver and wanna run script locally
+    
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-dev-shm-usage')
@@ -76,6 +78,9 @@ def selenium_parse():
     options.add_argument('--start-maximized')
 
     # end of options
+
+    # Add proxy configuration
+    options.add_argument('--proxy-server=http://139.144.24.46:8080')
 
 
     # And now we can initiate our driver

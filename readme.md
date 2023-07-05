@@ -1,6 +1,6 @@
 To run script in docker container execute this commands:
 
-docker build -t selenium_test .
+dsudo ocker build -t selenium_test .
 
 sudo docker run --rm -v "$(pwd):/app" selenium_test
 
